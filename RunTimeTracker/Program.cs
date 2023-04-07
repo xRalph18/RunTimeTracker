@@ -71,7 +71,7 @@ class Program
         }
         else if (task == "list")
         {
-            var processesString = File.ReadAllText("ProcessesNames.json");
+            var processesString = File.ReadAllText("../../../ProcessesNames.json");
             var processesList = JsonConvert.DeserializeObject<List<ProcessesNamesModel>>(processesString, settings);
 
             foreach (var item in processesList)

@@ -7,5 +7,6 @@
   {"Id": 6, "AppName":"Visual Studio Code", "AppProcessName":"Code"},
   {"Id": 7, "AppName":"Visual Studio", "AppProcessName":"devenv"},
   {"Id": 8, "AppName":"Microsoft Edge", "AppProcessName":"msedge"},
-  {"Id": 9, "AppName":"Minecraft", "AppProcessName":"Minecraft"}
+  {"Id": 9, "AppName":"Minecraft", "AppProcessName":"Minecraft"},
+  {"Id": 10, "AppName":"Spotify", "AppProcessName":"spotify"},
 ]
