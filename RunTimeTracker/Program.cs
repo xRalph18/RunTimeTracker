@@ -14,19 +14,23 @@ class Program
 
         var trackedApp = Process.GetProcessesByName(appName).FirstOrDefault();
         string dataPath = "TimeData.json";
-        TimeSaveModel timeData;
         string dataString;
         DateTime startTime = trackedApp.StartTime;
+
+        var settings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+        };
 
         if (File.Exists(dataPath))
         {
             dataString = File.ReadAllText(dataPath);
-            timeData = JsonConvert.DeserializeObject<TimeSaveModel>(dataString);
+            var timeData = JsonConvert.DeserializeObject<List<TimeSaveModel>>(dataString, settings) ?? new List<TimeSaveModel>();
 
             trackedApp.WaitForExit();
 
             DateTime exitTime = DateTime.Now;
-            //timeData.Add(new TimeSaveModel(appName, startTime, exitTime));
+            timeData.Add(new TimeSaveModel(appName, startTime, exitTime));
 
             dataString = JsonConvert.SerializeObject(timeData);
             File.WriteAllText(dataPath, dataString);
