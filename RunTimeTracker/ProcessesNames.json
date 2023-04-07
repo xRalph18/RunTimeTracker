@@ -1,0 +1,11 @@
+[
+  {"Id": 1, "AppName":"Blender", "AppProcessName":"blender"},
+  {"Id": 2, "AppName":"Chrome", "AppProcessName":"chrome"},
+  {"Id": 3, "AppName":"Opera", "AppProcessName":"opera"},
+  {"Id": 4, "AppName":"Discord", "AppProcessName":"Discord"},
+  {"Id": 5, "AppName":"Steam", "AppProcessName":"steam"},
+  {"Id": 6, "AppName":"Visual Studio Code", "AppProcessName":"Code"},
+  {"Id": 7, "AppName":"Visual Studio", "AppProcessName":"devenv"},
+  {"Id": 8, "AppName":"Microsoft Edge", "AppProcessName":"msedge"},
+  {"Id": 9, "AppName":"Minecraft", "AppProcessName":"Minecraft"}
+]

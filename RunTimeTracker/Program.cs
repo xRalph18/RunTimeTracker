@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
-using RunTimeTracker;
+using RunTimeTracker.Models;
 using System.Diagnostics;
 
 class Program
 {
     public static void Main()
     {
-        Console.Write("(track) / (check): ");
+        Console.Write("(track) / (check) / (list): ");
         var task = Console.ReadLine();
 
         string dataPath = "TimeData.json";
@@ -67,6 +67,16 @@ class Program
             {
                 File.WriteAllText(dataPath, "");
                 return;
+            }
+        }
+        else if (task == "list")
+        {
+            var processesString = File.ReadAllText("ProcessesNames.json");
+            var processesList = JsonConvert.DeserializeObject<List<ProcessesNamesModel>>(processesString, settings);
+
+            foreach (var item in processesList)
+            {
+                Console.WriteLine($"{item.AppName}: {item.AppProcessName}");
             }
         }
         else
