@@ -78,6 +78,8 @@ class Program
             {
                 Console.WriteLine($"{item.AppName}: {item.AppProcessName}");
             }
+
+            Console.ReadKey();
         }
         else
         {
