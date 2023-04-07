@@ -12,8 +12,9 @@ namespace RunTimeTracker
         public DateTime StartTime { get; set; }
         public DateTime ExitTime { get; set; }
 
-        public TimeSaveModel(DateTime startTime, DateTime exitTime)
+        public TimeSaveModel(string appName, DateTime startTime, DateTime exitTime)
         {
+            AppName = appName;
             StartTime = startTime;
             ExitTime = exitTime;
         }
