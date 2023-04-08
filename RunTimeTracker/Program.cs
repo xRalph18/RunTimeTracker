@@ -6,7 +6,7 @@ class Program
 {
     public static void Main()
     {
-        Console.Write("(track) / (check) / (list): ");
+        Console.Write("(track) / (check) / (list) / (cls): ");
         var task = Console.ReadLine();
 
         string dataPath = "TimeData.json";
@@ -80,6 +80,33 @@ class Program
             }
 
             Console.ReadKey();
+        }
+        else if (task == "cls")
+        {
+            Console.Write("Podaj nazwę aplikacji, której czas chcesz wyczyścić: ");
+            var appToClear = Console.ReadLine();
+
+            if (File.Exists(dataPath))
+            {
+                dataString = File.ReadAllText(dataPath);
+                var timeData = JsonConvert.DeserializeObject<List<TimeSaveModel>>(dataString, settings) ?? new List<TimeSaveModel>();
+
+                foreach (var item in timeData.Where(n => n.AppName == appToClear).ToList())
+                {
+                    timeData.Remove(item);
+                }
+
+                dataString = JsonConvert.SerializeObject(timeData);
+                File.WriteAllText(dataPath, dataString);
+
+                Console.WriteLine($"Zresetowano {appToClear}");
+                Console.ReadKey();
+            }
+            else
+            {
+                File.WriteAllText(dataPath, "");
+                return;
+            }
         }
         else
         {
