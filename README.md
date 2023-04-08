@@ -28,3 +28,8 @@ class Program
 ```
 
 - [^1] Tutaj podaj część nazwy programu, kóry chcesz sprawdzić (najlepiej bez pierwszej litery)
+
+<br>
+
+### To Do:
+- [ ] Sprawdzanie z filtrem daty (1 liniowe)
