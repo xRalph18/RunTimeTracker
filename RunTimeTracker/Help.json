@@ -1,0 +1,6 @@
+[
+	{"Name":"track", "Command":"track <nazwa aplikacji>", "Description":"Rozpoczyna śledzenie aplikacji"},
+	{"Name":"check", "Command":"check <nazwa aplikacji> <data (opcjonalne)>", "Description":"Sprawdza całkowity czas działania aplikacji lub czas z danego dnia"},
+	{"Name":"list", "Command":"list <all>", "Description":"Wyświetla listę aplikacji lub listę wszystkich procesów"},
+	{"Name":"clear", "Command":"clear <nazwa aplikacji>", "Description":"Resetuje czas aplikacji"},
+]

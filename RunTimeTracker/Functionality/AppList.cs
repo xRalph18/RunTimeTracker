@@ -1,0 +1,41 @@
+﻿using Newtonsoft.Json;
+using RunTimeTracker.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RunTimeTracker.Functionality
+{
+    class AppList
+    {
+        private static JsonSerializerSettings settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+
+        public static void List(string[] command)
+        {
+            var processesString = File.ReadAllText("ProcessesNames.json");
+            var processesList = JsonConvert.DeserializeObject<List<ProcessesNamesModel>>(processesString, settings);
+
+            if (command.Length == 1)
+            {
+                foreach (var item in processesList)
+                {
+                    Console.WriteLine($"{item.AppName}: {item.AppProcessName}");
+                }
+            }
+            else if (command.Length == 2)
+            {
+                var processes = Process.GetProcesses();;
+
+                foreach (var item in processes)
+                {
+                    Console.WriteLine(item.ProcessName);
+                }
+            }
+
+            Console.ReadKey();
+        }
+    }
+}

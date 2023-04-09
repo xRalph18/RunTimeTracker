@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RunTimeTracker.Functionality;
 using RunTimeTracker.Models;
 using System.Diagnostics;
 
@@ -6,107 +7,30 @@ class Program
 {
     public static void Main()
     {
-        Console.Write("(track) / (check) / (list) / (cls): ");
-        var task = Console.ReadLine();
+        Console.Write("(track) / (check) / (help): ");
+        var task = Console.ReadLine().Split(" ");
 
         string dataPath = "TimeData.json";
-        string dataString;
 
-        var settings = new JsonSerializerSettings
+        if (task[0] == "track")
         {
-            NullValueHandling = NullValueHandling.Ignore,
-        };
-
-        if (task == "track")
-        {
-            Console.Write("Podaj nazwę aplikacji, którą chcesz ślidzić: ");
-            string appName = Console.ReadLine();
-
-            var trackedApp = Process.GetProcessesByName(appName).FirstOrDefault();
-            DateTime startTime = trackedApp.StartTime;
-
-            if (File.Exists(dataPath))
-            {
-                dataString = File.ReadAllText(dataPath);
-                var timeData = JsonConvert.DeserializeObject<List<TimeSaveModel>>(dataString, settings) ?? new List<TimeSaveModel>();
-
-                trackedApp.WaitForExit();
-
-                DateTime exitTime = DateTime.Now;
-                timeData.Add(new TimeSaveModel(appName, startTime, exitTime));
-
-                dataString = JsonConvert.SerializeObject(timeData);
-                File.WriteAllText(dataPath, dataString);
-            }
-            else
-            {
-                File.WriteAllText(dataPath, "");
-                return;
-            }
+            Track.Tracker(dataPath, task);
         }
-        else if (task == "check")
+        else if (task[0] == "check")
         {
-            Console.Write("Podaj nazwę aplikacji, której czas chcesz sprawdzić: ");
-            var appToCheck = Console.ReadLine();
-
-            if (File.Exists(dataPath))
-            {
-                dataString = File.ReadAllText(dataPath);
-                var timeData = JsonConvert.DeserializeObject<List<TimeSaveModel>>(dataString, settings) ?? new List<TimeSaveModel>();
-                TimeSpan runTime = new TimeSpan();
-
-                foreach (var item in timeData.Where(n => n.AppName == appToCheck))
-                {
-                    runTime += item.ExitTime - item.StartTime;
-                }
-
-                Console.WriteLine(runTime);
-                Console.ReadKey();
-            }
-            else
-            {
-                File.WriteAllText(dataPath, "");
-                return;
-            }
+            Check.Checker(dataPath, task);
         }
-        else if (task == "list")
+        else if (task[0] == "list")
         {
-            var processesString = File.ReadAllText("../../../ProcessesNames.json");
-            var processesList = JsonConvert.DeserializeObject<List<ProcessesNamesModel>>(processesString, settings);
-
-            foreach (var item in processesList)
-            {
-                Console.WriteLine($"{item.AppName}: {item.AppProcessName}");
-            }
-
-            Console.ReadKey();
+            AppList.List(task);
         }
-        else if (task == "cls")
+        else if (task[0] == "cls" || task[0] == "clear")
         {
-            Console.Write("Podaj nazwę aplikacji, której czas chcesz wyczyścić: ");
-            var appToClear = Console.ReadLine();
-
-            if (File.Exists(dataPath))
-            {
-                dataString = File.ReadAllText(dataPath);
-                var timeData = JsonConvert.DeserializeObject<List<TimeSaveModel>>(dataString, settings) ?? new List<TimeSaveModel>();
-
-                foreach (var item in timeData.Where(n => n.AppName == appToClear).ToList())
-                {
-                    timeData.Remove(item);
-                }
-
-                dataString = JsonConvert.SerializeObject(timeData);
-                File.WriteAllText(dataPath, dataString);
-
-                Console.WriteLine($"Zresetowano {appToClear}");
-                Console.ReadKey();
-            }
-            else
-            {
-                File.WriteAllText(dataPath, "");
-                return;
-            }
+            Clear.Cls(dataPath, task);
+        }
+        else if (task[0] == "help")
+        {
+            Commands.Help(task);
         }
         else
         {

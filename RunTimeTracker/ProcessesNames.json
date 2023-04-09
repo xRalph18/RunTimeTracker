@@ -9,4 +9,5 @@
   {"Id": 8, "AppName":"Microsoft Edge", "AppProcessName":"msedge"},
   {"Id": 9, "AppName":"Minecraft", "AppProcessName":"Minecraft"},
   {"Id": 10, "AppName":"Spotify", "AppProcessName":"spotify"},
+  {"Id": 11, "AppName":"Quixel Mixer", "AppProcessName":"Quixel Mixer"},
 ]
