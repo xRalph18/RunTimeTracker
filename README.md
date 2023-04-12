@@ -5,4 +5,4 @@ Przed wyłączeniem aplikacji uruchom program oraz podaj nazwę aplikacji, któr
 Dostępne polecenia znajdują się pod poleceniem `help` / `help <nazwa polecenia>`
 
 ### To Do:
-- [ ] Nazwy apikacji ze spacją
+- [ ] ...
