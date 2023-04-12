@@ -21,14 +21,14 @@ namespace RunTimeTracker.Functionality
             var trackedApp = Process.GetProcessesByName(commandList[1]).FirstOrDefault();
             DateTime startTime = trackedApp.StartTime;
 
+            trackedApp.WaitForExit();
+
             if (File.Exists(dataPath))
             {
                 if (commandList.Length == 2)
                 {
                     dataString = File.ReadAllText(dataPath);
                     var timeData = JsonConvert.DeserializeObject<List<TimeSaveModel>>(dataString, settings) ?? new List<TimeSaveModel>();
-
-                    trackedApp.WaitForExit();
 
                     DateTime exitTime = DateTime.Now;
                     timeData.Add(new TimeSaveModel(commandList[1], startTime, exitTime));
