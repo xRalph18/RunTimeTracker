@@ -12,12 +12,12 @@ namespace RunTimeTracker.Functionality
     {
         private static JsonSerializerSettings settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
-        public static void Help(string[] task)
+        public static void Help(string[] command)
         {
             var helpString = File.ReadAllText("Help.json");
             var helpList = JsonConvert.DeserializeObject<List<HelpModel>>(helpString, settings);
 
-            if (task.Length == 1)
+            if (command.Length == 1)
             {
                 foreach (var item in helpList)
                 {
@@ -26,9 +26,9 @@ namespace RunTimeTracker.Functionality
 
                 Console.ReadKey();
             }
-            else if (task.Length == 2)
+            else if (command.Length == 2)
             {
-                if (task[1] == "track")
+                if (command[1] == "track")
                 {
                     foreach (var item in helpList.Where(n => n.Name == "track"))
                     {
@@ -38,7 +38,7 @@ namespace RunTimeTracker.Functionality
 
                     Console.ReadKey();
                 }
-                else if (task[1] == "check")
+                else if (command[1] == "check")
                 {
                     foreach (var item in helpList.Where(n => n.Name == "check"))
                     {
@@ -48,7 +48,7 @@ namespace RunTimeTracker.Functionality
 
                     Console.ReadKey();
                 }
-                else if (task[1] == "list")
+                else if (command[1] == "list")
                 {
                     foreach (var item in helpList.Where(n => n.Name == "list"))
                     {
@@ -58,7 +58,7 @@ namespace RunTimeTracker.Functionality
 
                     Console.ReadKey();
                 }
-                else if (task[1] == "clear" || task[0] == "cls")
+                else if (command[1] == "clear" || command[0] == "cls")
                 {
                     foreach (var item in helpList.Where(n => n.Name == "clear"))
                     {

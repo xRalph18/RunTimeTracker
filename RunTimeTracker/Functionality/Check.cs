@@ -7,8 +7,9 @@ namespace RunTimeTracker.Functionality
     {
         private static JsonSerializerSettings settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
-        public static void Checker(string dataPath, string[] command)
+        public static void Checker(string dataPath, string command)
         {
+            var commandList = command.Split(" ");
             string dataString;
 
             if (File.Exists(dataPath))
@@ -17,19 +18,36 @@ namespace RunTimeTracker.Functionality
                 var timeData = JsonConvert.DeserializeObject<List<TimeSaveModel>>(dataString, settings) ?? new List<TimeSaveModel>();
                 TimeSpan runTime = new TimeSpan();
 
-                if (command.Length == 2)
+                if (command.Contains("-t"))
                 {
-                    foreach (var item in timeData.Where(n => n.AppName == command[1]))
+                    if (command.Contains("-s"))
                     {
-                        runTime += item.ExitTime - item.StartTime;
+                        commandList[1] = commandList[1] + " " + commandList[2];
+
+                        foreach (var item in timeData.Where(n => n.AppName == commandList[1] && n.StartTime.Date == DateTime.Parse(commandList[3])))
+                        {
+                            runTime += item.ExitTime - item.StartTime;
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in timeData.Where(n => n.AppName == commandList[1] && n.StartTime.Date == DateTime.Parse(commandList[2])))
+                        {
+                            runTime += item.ExitTime - item.StartTime;
+                        }
                     }
 
                     Console.WriteLine(runTime);
                     Console.ReadKey();
                 }
-                else if (command.Length == 3)
+                else if (!command.Contains("-t"))
                 {
-                    foreach (var item in timeData.Where(n => n.AppName == command[1] && n.StartTime.Date == DateTime.Parse(command[2])))
+                    if (command.Contains("-s"))
+                    {
+                        commandList[1] = commandList[1] + " " + commandList[2];
+                    }
+
+                    foreach (var item in timeData.Where(n => n.AppName == commandList[1]))
                     {
                         runTime += item.ExitTime - item.StartTime;
                     }
@@ -39,7 +57,7 @@ namespace RunTimeTracker.Functionality
                 }
                 else
                 {
-                    Console.WriteLine("Niepoprawna ilość parametrów");
+                    Console.WriteLine("Coś poszło nie tak");
                     Console.ReadKey();
                 }
             }

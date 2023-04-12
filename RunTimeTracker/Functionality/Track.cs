@@ -13,16 +13,17 @@ namespace RunTimeTracker.Functionality
     {
         private static JsonSerializerSettings settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
-        public static void Tracker(string dataPath, string[] command)
+        public static void Tracker(string dataPath, string command)
         {
+            var commandList = command.Split(" ", 2);
             string dataString;
 
-            var trackedApp = Process.GetProcessesByName(command[1]).FirstOrDefault();
+            var trackedApp = Process.GetProcessesByName(commandList[1]).FirstOrDefault();
             DateTime startTime = trackedApp.StartTime;
 
             if (File.Exists(dataPath))
             {
-                if (command.Length == 2)
+                if (commandList.Length == 2)
                 {
                     dataString = File.ReadAllText(dataPath);
                     var timeData = JsonConvert.DeserializeObject<List<TimeSaveModel>>(dataString, settings) ?? new List<TimeSaveModel>();
@@ -30,7 +31,7 @@ namespace RunTimeTracker.Functionality
                     trackedApp.WaitForExit();
 
                     DateTime exitTime = DateTime.Now;
-                    timeData.Add(new TimeSaveModel(command[1], startTime, exitTime));
+                    timeData.Add(new TimeSaveModel(commandList[1], startTime, exitTime));
 
                     dataString = JsonConvert.SerializeObject(timeData);
                     File.WriteAllText(dataPath, dataString);

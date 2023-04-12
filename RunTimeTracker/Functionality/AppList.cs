@@ -13,19 +13,20 @@ namespace RunTimeTracker.Functionality
     {
         private static JsonSerializerSettings settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
-        public static void List(string[] command)
+        public static void List(string command)
         {
+            var commandList = command.Split(" ", 2);
             var processesString = File.ReadAllText("ProcessesNames.json");
             var processesList = JsonConvert.DeserializeObject<List<ProcessesNamesModel>>(processesString, settings);
 
-            if (command.Length == 1)
+            if (commandList.Length == 1)
             {
                 foreach (var item in processesList)
                 {
                     Console.WriteLine($"{item.AppName}: {item.AppProcessName}");
                 }
             }
-            else if (command.Length == 2)
+            else if (commandList.Length == 2)
             {
                 var processes = Process.GetProcesses();;
 
