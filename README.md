@@ -5,4 +5,4 @@ Przed wyłączeniem aplikacji uruchom program oraz podaj nazwę aplikacji, któr
 Dostępne polecenia znajdują się pod poleceniem `help` / `help <nazwa polecenia>`
 
 ### To Do:
-- [ ] Późniejsze pobieranie obecnego stanu pliku JSON zapisującego czas (Błąd zapisu przy kilku procesach na raz)
+- [ ] ...
