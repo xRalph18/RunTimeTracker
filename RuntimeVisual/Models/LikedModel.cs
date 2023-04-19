@@ -8,8 +8,13 @@ namespace RuntimeVisual.Models
 {
     class LikedModel
     {
-        public int Id { get; set; }
         public string ProcessName { get; set; }
         public string ProcessTag { get; set; }
+
+        public LikedModel(string processname, string processtag)
+        {
+            ProcessName = processname;
+            ProcessTag = processtag;
+        }
     }
 }
