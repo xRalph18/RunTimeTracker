@@ -5,4 +5,5 @@ Przed wyłączeniem aplikacji uruchom program oraz podaj nazwę aplikacji, któr
 Dostępne polecenia znajdują się pod poleceniem `help` / `help <nazwa polecenia>`
 
 ### To Do:
-- [ ] ...
+- [ ] Visual - Check Time
+- [ ] Visual - Check tracking for bugs
