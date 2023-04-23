@@ -114,7 +114,7 @@
             CancleTag.TabIndex = 3;
             CancleTag.Text = "Cancle";
             CancleTag.UseVisualStyleBackColor = true;
-            CancleTag.Click += button1_Click;
+            CancleTag.Click += CancleTag_Click;
             // 
             // SubmitTag
             // 
