@@ -59,5 +59,15 @@ namespace RuntimeVisual.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_open_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("file_open_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

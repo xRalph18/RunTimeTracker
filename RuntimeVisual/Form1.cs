@@ -57,7 +57,16 @@ namespace RuntimeVisual
 
         private void RemoveLiked_Click(object sender, EventArgs e)
         {
-            string selectedLikedApp = Liked.SelectedItem.ToString();
+            string selectedLikedApp = "";
+
+            if (Liked.SelectedItem != null)
+            {
+                selectedLikedApp = Liked.SelectedItem.ToString();
+            }
+            else
+            {
+                return;
+            }
 
             var likedData = FileMethods.ReadLiked();
 
@@ -79,10 +88,13 @@ namespace RuntimeVisual
                 ViewAllProcesses.Items.Add(item.ProcessName);
             }
 
-
             string likedDataString = JsonConvert.SerializeObject(likedData);
             File.WriteAllText(_likedDataPath, likedDataString);
-            Liked.ClearSelected();
+
+            if (Liked.Items.Count > 0)
+            {
+                Liked.SetSelected(0, true);
+            }
         }
 
         private void SubmitTag_Click(object sender, EventArgs e)
@@ -246,6 +258,54 @@ namespace RuntimeVisual
                 File.WriteAllText(_timeDataPath, "");
                 TimeList.Items.Clear();
             }
+        }
+
+        private void ImportTime_Click(object sender, EventArgs e)
+        {
+            File_Time.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+            File_Time.ShowDialog();
+
+            string fileName = File_Time.FileName;
+            string fileString = File.ReadAllText(fileName);
+
+            File.WriteAllText(_timeDataPath, fileString);
+
+            var appRunTime = CheckMethods.CheckTime();
+            TimeList.Items.Clear();
+            foreach (var item in appRunTime)
+            {
+                TimeList.Items.Add(item);
+            }
+        }
+
+        private void SaveTime_Click(object sender, EventArgs e)
+        {
+            Save_Time.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+            Save_Time.ShowDialog();
+        }
+
+        private void ImportLiked_Click(object sender, EventArgs e)
+        {
+            File_Liked.Filter = "JSON file (*.json)|*.json|All files (*.*)|*.*";
+            File_Liked.ShowDialog();
+
+            string fileName = File_Liked.FileName;
+            string fileString = File.ReadAllText(fileName);
+
+            File.WriteAllText(_likedDataPath, fileString);
+
+            var likedData = FileMethods.ReadLiked();
+            Liked.Items.Clear();
+            foreach (var item in likedData)
+            {
+                Liked.Items.Add(item.ProcessTag);
+            }
+        }
+
+        private void SaveLiked_Click(object sender, EventArgs e)
+        {
+            Save_Liked.Filter = "JSON file (*.json)|*.json|All files (*.*)|*.*";
+            Save_Liked.ShowDialog();
         }
     }
 }

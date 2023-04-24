@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             ViewAllProcesses = new ListBox();
             Liked = new ListBox();
             AddToLiked = new Button();
@@ -47,6 +48,14 @@
             Label_TrackedProcesses = new Label();
             ClearSelectedBttn = new Button();
             ClearAllBttn = new Button();
+            ImportTime = new Button();
+            ImportLiked = new Button();
+            File_Time = new OpenFileDialog();
+            File_Liked = new OpenFileDialog();
+            Save_Time = new SaveFileDialog();
+            SaveLiked = new Button();
+            SaveTime = new Button();
+            Save_Liked = new SaveFileDialog();
             AppTagPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -235,11 +244,81 @@
             ClearAllBttn.UseVisualStyleBackColor = true;
             ClearAllBttn.Click += ClearAllBttn_Click;
             // 
+            // ImportTime
+            // 
+            ImportTime.BackgroundImageLayout = ImageLayout.None;
+            ImportTime.ImageAlign = ContentAlignment.MiddleLeft;
+            ImportTime.Location = new Point(369, 52);
+            ImportTime.Name = "ImportTime";
+            ImportTime.Size = new Size(112, 34);
+            ImportTime.TabIndex = 22;
+            ImportTime.Text = "Import Time";
+            ImportTime.UseVisualStyleBackColor = true;
+            ImportTime.Click += ImportTime_Click;
+            // 
+            // ImportLiked
+            // 
+            ImportLiked.BackgroundImageLayout = ImageLayout.None;
+            ImportLiked.ImageAlign = ContentAlignment.MiddleLeft;
+            ImportLiked.Location = new Point(251, 52);
+            ImportLiked.Name = "ImportLiked";
+            ImportLiked.Size = new Size(112, 34);
+            ImportLiked.TabIndex = 23;
+            ImportLiked.Text = "Import Liked";
+            ImportLiked.UseVisualStyleBackColor = true;
+            ImportLiked.Click += ImportLiked_Click;
+            // 
+            // File_Time
+            // 
+            File_Time.FileName = "TimeData.json";
+            // 
+            // File_Liked
+            // 
+            File_Liked.FileName = "Liked.json";
+            // 
+            // Save_Time
+            // 
+            Save_Time.FileName = "TimeData.json";
+            Save_Time.InitialDirectory = "Desktop";
+            // 
+            // SaveLiked
+            // 
+            SaveLiked.BackgroundImageLayout = ImageLayout.None;
+            SaveLiked.ImageAlign = ContentAlignment.MiddleLeft;
+            SaveLiked.Location = new Point(251, 92);
+            SaveLiked.Name = "SaveLiked";
+            SaveLiked.Size = new Size(112, 34);
+            SaveLiked.TabIndex = 24;
+            SaveLiked.Text = "Save Liked";
+            SaveLiked.UseVisualStyleBackColor = true;
+            SaveLiked.Click += SaveLiked_Click;
+            // 
+            // SaveTime
+            // 
+            SaveTime.BackgroundImageLayout = ImageLayout.None;
+            SaveTime.ImageAlign = ContentAlignment.MiddleLeft;
+            SaveTime.Location = new Point(369, 92);
+            SaveTime.Name = "SaveTime";
+            SaveTime.Size = new Size(112, 34);
+            SaveTime.TabIndex = 25;
+            SaveTime.Text = "Save Time";
+            SaveTime.UseVisualStyleBackColor = true;
+            SaveTime.Click += SaveTime_Click;
+            // 
+            // Save_Liked
+            // 
+            Save_Liked.FileName = "Liked.json";
+            Save_Liked.InitialDirectory = "Desktop";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(SaveTime);
+            Controls.Add(SaveLiked);
+            Controls.Add(ImportLiked);
+            Controls.Add(ImportTime);
             Controls.Add(Label_TrackedProcesses);
             Controls.Add(ClearAllBttn);
             Controls.Add(ClearSelectedBttn);
@@ -255,6 +334,7 @@
             Controls.Add(AddToLiked);
             Controls.Add(Liked);
             Controls.Add(ViewAllProcesses);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Run Time Tracker";
             AppTagPanel.ResumeLayout(false);
@@ -284,5 +364,13 @@
         private Label Label_TrackedProcesses;
         private Button ClearSelectedBttn;
         private Button ClearAllBttn;
+        private Button ImportTime;
+        private Button ImportLiked;
+        private OpenFileDialog File_Time;
+        private OpenFileDialog File_Liked;
+        private SaveFileDialog Save_Time;
+        private Button SaveLiked;
+        private Button SaveTime;
+        private SaveFileDialog Save_Liked;
     }
 }
