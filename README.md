@@ -7,3 +7,4 @@ Dostępne polecenia znajdują się pod poleceniem `help` / `help <nazwa poleceni
 ### To Do:
 - [ ] Visual - Check Time
 - [ ] Visual - Check tracking for bugs
+- [ ] Visual - Currently tracked apps
