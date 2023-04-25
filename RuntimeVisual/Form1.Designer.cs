@@ -63,7 +63,7 @@
             // 
             ViewAllProcesses.FormattingEnabled = true;
             ViewAllProcesses.ItemHeight = 20;
-            ViewAllProcesses.Location = new Point(12, 52);
+            ViewAllProcesses.Location = new Point(12, 53);
             ViewAllProcesses.Name = "ViewAllProcesses";
             ViewAllProcesses.Size = new Size(233, 164);
             ViewAllProcesses.TabIndex = 0;
@@ -72,14 +72,14 @@
             // 
             Liked.FormattingEnabled = true;
             Liked.ItemHeight = 20;
-            Liked.Location = new Point(12, 274);
+            Liked.Location = new Point(12, 275);
             Liked.Name = "Liked";
             Liked.Size = new Size(233, 164);
             Liked.TabIndex = 4;
             // 
             // AddToLiked
             // 
-            AddToLiked.Location = new Point(12, 222);
+            AddToLiked.Location = new Point(12, 223);
             AddToLiked.Name = "AddToLiked";
             AddToLiked.Size = new Size(112, 46);
             AddToLiked.TabIndex = 5;
@@ -89,7 +89,7 @@
             // 
             // RemoveLiked
             // 
-            RemoveLiked.Location = new Point(133, 222);
+            RemoveLiked.Location = new Point(133, 223);
             RemoveLiked.Name = "RemoveLiked";
             RemoveLiked.Size = new Size(112, 46);
             RemoveLiked.TabIndex = 6;
@@ -105,7 +105,7 @@
             AppTagPanel.Controls.Add(SubmitTag);
             AppTagPanel.Controls.Add(TagLabel);
             AppTagPanel.Controls.Add(AppTag);
-            AppTagPanel.Location = new Point(251, 294);
+            AppTagPanel.Location = new Point(251, 295);
             AppTagPanel.Name = "AppTagPanel";
             AppTagPanel.Size = new Size(254, 126);
             AppTagPanel.TabIndex = 7;
@@ -153,14 +153,14 @@
             // 
             Tracked.FormattingEnabled = true;
             Tracked.ItemHeight = 20;
-            Tracked.Location = new Point(251, 274);
+            Tracked.Location = new Point(251, 275);
             Tracked.Name = "Tracked";
             Tracked.Size = new Size(254, 164);
             Tracked.TabIndex = 15;
             // 
             // RefreshProcesses
             // 
-            RefreshProcesses.Location = new Point(12, 12);
+            RefreshProcesses.Location = new Point(12, 13);
             RefreshProcesses.Name = "RefreshProcesses";
             RefreshProcesses.Size = new Size(233, 34);
             RefreshProcesses.TabIndex = 8;
@@ -170,7 +170,7 @@
             // 
             // StartTracking
             // 
-            StartTracking.Location = new Point(251, 12);
+            StartTracking.Location = new Point(251, 13);
             StartTracking.Name = "StartTracking";
             StartTracking.Size = new Size(112, 34);
             StartTracking.TabIndex = 9;
@@ -180,7 +180,7 @@
             // 
             // CheckTime
             // 
-            CheckTime.Location = new Point(369, 12);
+            CheckTime.Location = new Point(369, 13);
             CheckTime.Name = "CheckTime";
             CheckTime.Size = new Size(112, 34);
             CheckTime.TabIndex = 13;
@@ -190,25 +190,26 @@
             // 
             // ShowInfo
             // 
-            ShowInfo.Location = new Point(487, 12);
+            ShowInfo.Location = new Point(487, 13);
             ShowInfo.Name = "ShowInfo";
             ShowInfo.Size = new Size(112, 34);
             ShowInfo.TabIndex = 14;
             ShowInfo.Text = "Info";
             ShowInfo.UseVisualStyleBackColor = true;
+            ShowInfo.Click += ShowInfo_Click;
             // 
             // TimeList
             // 
             TimeList.FormattingEnabled = true;
             TimeList.ItemHeight = 20;
-            TimeList.Location = new Point(511, 234);
+            TimeList.Location = new Point(511, 235);
             TimeList.Name = "TimeList";
             TimeList.Size = new Size(277, 164);
             TimeList.TabIndex = 18;
             // 
             // CheckByDate
             // 
-            CheckByDate.Location = new Point(511, 201);
+            CheckByDate.Location = new Point(511, 202);
             CheckByDate.Name = "CheckByDate";
             CheckByDate.Size = new Size(277, 27);
             CheckByDate.TabIndex = 17;
@@ -218,7 +219,7 @@
             // 
             Label_TrackedProcesses.AutoSize = true;
             Label_TrackedProcesses.BackColor = Color.Transparent;
-            Label_TrackedProcesses.Location = new Point(251, 248);
+            Label_TrackedProcesses.Location = new Point(251, 249);
             Label_TrackedProcesses.Name = "Label_TrackedProcesses";
             Label_TrackedProcesses.Size = new Size(189, 20);
             Label_TrackedProcesses.TabIndex = 19;
@@ -226,7 +227,7 @@
             // 
             // ClearSelectedBttn
             // 
-            ClearSelectedBttn.Location = new Point(653, 404);
+            ClearSelectedBttn.Location = new Point(653, 405);
             ClearSelectedBttn.Name = "ClearSelectedBttn";
             ClearSelectedBttn.Size = new Size(135, 34);
             ClearSelectedBttn.TabIndex = 20;
@@ -236,7 +237,7 @@
             // 
             // ClearAllBttn
             // 
-            ClearAllBttn.Location = new Point(511, 404);
+            ClearAllBttn.Location = new Point(511, 405);
             ClearAllBttn.Name = "ClearAllBttn";
             ClearAllBttn.Size = new Size(135, 34);
             ClearAllBttn.TabIndex = 21;
@@ -248,7 +249,7 @@
             // 
             ImportTime.BackgroundImageLayout = ImageLayout.None;
             ImportTime.ImageAlign = ContentAlignment.MiddleLeft;
-            ImportTime.Location = new Point(369, 52);
+            ImportTime.Location = new Point(369, 53);
             ImportTime.Name = "ImportTime";
             ImportTime.Size = new Size(112, 34);
             ImportTime.TabIndex = 22;
@@ -260,7 +261,7 @@
             // 
             ImportLiked.BackgroundImageLayout = ImageLayout.None;
             ImportLiked.ImageAlign = ContentAlignment.MiddleLeft;
-            ImportLiked.Location = new Point(251, 52);
+            ImportLiked.Location = new Point(251, 53);
             ImportLiked.Name = "ImportLiked";
             ImportLiked.Size = new Size(112, 34);
             ImportLiked.TabIndex = 23;
@@ -285,7 +286,7 @@
             // 
             SaveLiked.BackgroundImageLayout = ImageLayout.None;
             SaveLiked.ImageAlign = ContentAlignment.MiddleLeft;
-            SaveLiked.Location = new Point(251, 92);
+            SaveLiked.Location = new Point(251, 93);
             SaveLiked.Name = "SaveLiked";
             SaveLiked.Size = new Size(112, 34);
             SaveLiked.TabIndex = 24;
@@ -297,7 +298,7 @@
             // 
             SaveTime.BackgroundImageLayout = ImageLayout.None;
             SaveTime.ImageAlign = ContentAlignment.MiddleLeft;
-            SaveTime.Location = new Point(369, 92);
+            SaveTime.Location = new Point(369, 93);
             SaveTime.Name = "SaveTime";
             SaveTime.Size = new Size(112, 34);
             SaveTime.TabIndex = 25;
@@ -314,7 +315,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 451);
             Controls.Add(SaveTime);
             Controls.Add(SaveLiked);
             Controls.Add(ImportLiked);

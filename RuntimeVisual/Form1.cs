@@ -50,6 +50,8 @@ namespace RuntimeVisual
             }
         }
 
+        // Processes & Liked
+
         private void AddToLiked_Click(object sender, EventArgs e)
         {
             AppTagPanel.Visible = true;
@@ -145,6 +147,8 @@ namespace RuntimeVisual
             }
         }
 
+        // Tracking
+
         private void StartTracking_Click(object sender, EventArgs e)
         {
             Process trackedApp = Process.GetCurrentProcess();
@@ -172,7 +176,9 @@ namespace RuntimeVisual
             DateTime startTime = trackedApp.StartTime;
             Tracked.Items.Add(trackedApp.ProcessName);
 
+            this.WindowState = FormWindowState.Minimized;
             trackedApp.WaitForExit();
+            this.WindowState = FormWindowState.Normal;
 
             Tracked.Items.Clear();
 
@@ -191,6 +197,8 @@ namespace RuntimeVisual
                 TimeList.Items.Add(item);
             }
         }
+
+        // Check Time Data
 
         private void CheckTime_Click(object sender, EventArgs e)
         {
@@ -226,6 +234,8 @@ namespace RuntimeVisual
             }
         }
 
+        // Clear Time Data
+
         private void ClearSelectedBttn_Click(object sender, EventArgs e)
         {
             string selectedTime = TimeList.SelectedItem.ToString();
@@ -260,6 +270,8 @@ namespace RuntimeVisual
             }
         }
 
+        // Save & Import
+
         private void ImportTime_Click(object sender, EventArgs e)
         {
             File_Time.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
@@ -282,6 +294,12 @@ namespace RuntimeVisual
         {
             Save_Time.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
             Save_Time.ShowDialog();
+
+            string fileName = Save_Time.FileName;
+            var timeData = FileMethods.ReadTime();
+            string timeString = JsonConvert.SerializeObject(timeData);
+
+            File.WriteAllText(fileName, timeString);
         }
 
         private void ImportLiked_Click(object sender, EventArgs e)
@@ -306,6 +324,20 @@ namespace RuntimeVisual
         {
             Save_Liked.Filter = "JSON file (*.json)|*.json|All files (*.*)|*.*";
             Save_Liked.ShowDialog();
+
+            string fileName = Save_Liked.FileName;
+            var likedData = FileMethods.ReadLiked();
+            string likedString = JsonConvert.SerializeObject(likedData);
+
+            File.WriteAllText(fileName, likedString);
+        }
+
+        // Info
+
+        private void ShowInfo_Click(object sender, EventArgs e)
+        {
+            InfoPanel infoPanel = new InfoPanel();
+            infoPanel.ShowDialog();
         }
     }
 }

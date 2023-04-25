@@ -11,6 +11,11 @@ namespace RuntimeVisual.Methods
 {
     class CheckMethods
     {
+        private static TimeSpan FormatFractions(TimeSpan timeSpan)
+        {
+            return new TimeSpan(timeSpan.Days, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds); 
+        }
+
         public static List<string> CheckTime()
         {
             var timeList = new List<string>();
@@ -26,7 +31,7 @@ namespace RuntimeVisual.Methods
                     runTime += item2.ExitTime - item2.StartTime;
                 }
 
-                timeList.Add($"{item.Key} - {runTime}");
+                timeList.Add($"{item.Key} - {FormatFractions(runTime)}");
                 runTime = new TimeSpan();
             }
 

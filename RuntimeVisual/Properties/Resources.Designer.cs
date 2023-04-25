@@ -63,9 +63,9 @@ namespace RuntimeVisual.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap file_open_FILL0_wght400_GRAD0_opsz48 {
+        internal static System.Drawing.Bitmap AppScreen {
             get {
-                object obj = ResourceManager.GetObject("file_open_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                object obj = ResourceManager.GetObject("AppScreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
