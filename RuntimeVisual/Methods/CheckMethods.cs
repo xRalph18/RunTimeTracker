@@ -2,6 +2,7 @@
 using RunTimeTracker.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime;
 using System.Text;
@@ -11,7 +12,7 @@ namespace RuntimeVisual.Methods
 {
     class CheckMethods
     {
-        private static TimeSpan FormatFractions(TimeSpan timeSpan)
+        public static TimeSpan FormatFractions(TimeSpan timeSpan)
         {
             return new TimeSpan(timeSpan.Days, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds); 
         }

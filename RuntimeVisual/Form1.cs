@@ -151,7 +151,7 @@ namespace RuntimeVisual
 
         private void StartTracking_Click(object sender, EventArgs e)
         {
-            Process trackedApp = Process.GetCurrentProcess();
+            Process trackedApp = new Process();
 
             if (ViewAllProcesses.SelectedItem != null)
             {
@@ -166,7 +166,7 @@ namespace RuntimeVisual
             }
             else
             {
-                MessageBox.Show("Process not selected");
+                MessageBox.Show("Process not selected", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -228,7 +228,7 @@ namespace RuntimeVisual
 
                 if (runTime != new TimeSpan())
                 {
-                    TimeList.Items.Add($"{item.Key} - {runTime}");
+                    TimeList.Items.Add($"{item.Key} - {CheckMethods.FormatFractions(runTime)}");
                     runTime = new TimeSpan();
                 }
             }
