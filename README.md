@@ -1,10 +1,14 @@
-# Run Time Tracker
+# RunTime Tracker
 
-Przed wyłączeniem aplikacji uruchom program oraz podaj nazwę aplikacji, którą chcesz śledzić. Następnie po wyłączeniu śledzonej alpikacji automatycznie zostatnie zapisany czas używania śledzonej aplikacji.
+## Command Prompt
+Before using this program turn on one that you would like to track. After exiting tracked program runtime will automatically save 
 
-Dostępne polecenia znajdują się pod poleceniem `help` / `help <nazwa polecenia>`
+You can find all command under `help` / `help <command name>`
+
+## Interface
 
 ### To Do:
-- [ ] Visual - Check Time
+- [ ] Visual - Track multiple processes at once (currently one app at the time)
+- [x] Visual - Saving data to file
+- [ ] Visual - Info button (In progrss)
 - [ ] Visual - Check tracking for bugs
-- [ ] Visual - Currently tracked apps
