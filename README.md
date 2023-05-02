@@ -9,6 +9,8 @@ You can find all command under `help` / `help <command name>`
 
 ### To Do:
 - [ ] Visual - Track multiple processes at once (currently one app at the time)
-- [x] Visual - Saving data to file
-- [ ] Visual - Info button (In progrss)
+- [ ] Visual - Info button (In progress)
 - [ ] Visual - Check tracking for bugs
+- [ ] Visual - More stats
+- [x] Visual - Saving data to file
+- [x] Visual - App Stats
