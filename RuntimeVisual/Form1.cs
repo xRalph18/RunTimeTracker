@@ -48,6 +48,24 @@ namespace RuntimeVisual
             {
                 TimeList.Items.Add(item);
             }
+
+            var timeDataInfo = new FileInfo(_timeDataPath);
+            float timeDataSize = timeDataInfo.Length / 1_000;
+
+            if (timeDataSize >= 1_000_000)
+            {
+                FileSize.Text = $"Size: {timeDataSize / 1_000_000:f2} GB";
+            }
+            else if (timeDataSize >= 1_000)
+            {
+                FileSize.Text = $"Size: {timeDataSize / 1_000:f2} MB";
+            }
+            else
+            {
+                FileSize.Text = $"Size: {timeDataSize:f2} KB";
+            }
+
+            Apps.Text = $"Apps: {appRunTime.Count}";
         }
 
         // Processes & Liked

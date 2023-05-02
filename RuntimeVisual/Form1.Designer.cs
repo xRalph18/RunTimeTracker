@@ -56,7 +56,14 @@
             SaveLiked = new Button();
             SaveTime = new Button();
             Save_Liked = new SaveFileDialog();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            label1 = new Label();
+            Apps = new Label();
+            FileSize = new Label();
             AppTagPanel.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // ViewAllProcesses
@@ -217,13 +224,13 @@
             // 
             // Label_TrackedProcesses
             // 
-            Label_TrackedProcesses.AutoSize = true;
             Label_TrackedProcesses.BackColor = Color.Transparent;
             Label_TrackedProcesses.Location = new Point(251, 249);
             Label_TrackedProcesses.Name = "Label_TrackedProcesses";
-            Label_TrackedProcesses.Size = new Size(189, 20);
+            Label_TrackedProcesses.Size = new Size(254, 20);
             Label_TrackedProcesses.TabIndex = 19;
             Label_TrackedProcesses.Text = "Currently tracked processes";
+            Label_TrackedProcesses.TextAlign = ContentAlignment.BottomCenter;
             // 
             // ClearSelectedBttn
             // 
@@ -311,11 +318,59 @@
             Save_Liked.FileName = "Liked.json";
             Save_Liked.InitialDirectory = "Desktop";
             // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.Window;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(Apps);
+            panel1.Controls.Add(FileSize);
+            panel1.Location = new Point(605, 13);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(183, 183);
+            panel1.TabIndex = 26;
+            // 
+            // panel2
+            // 
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(label1);
+            panel2.Location = new Point(-1, -2);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(183, 35);
+            panel2.TabIndex = 28;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(-1, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(182, 34);
+            label1.TabIndex = 27;
+            label1.Text = "App Data";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Apps
+            // 
+            Apps.Location = new Point(0, 36);
+            Apps.Name = "Apps";
+            Apps.Size = new Size(182, 20);
+            Apps.TabIndex = 1;
+            Apps.Text = "Apps:";
+            // 
+            // FileSize
+            // 
+            FileSize.Location = new Point(0, 56);
+            FileSize.Name = "FileSize";
+            FileSize.Size = new Size(182, 20);
+            FileSize.TabIndex = 0;
+            FileSize.Text = "Size:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 451);
+            Controls.Add(panel1);
             Controls.Add(SaveTime);
             Controls.Add(SaveLiked);
             Controls.Add(ImportLiked);
@@ -340,8 +395,9 @@
             Text = "Run Time Tracker";
             AppTagPanel.ResumeLayout(false);
             AppTagPanel.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -373,5 +429,10 @@
         private Button SaveLiked;
         private Button SaveTime;
         private SaveFileDialog Save_Liked;
+        private Panel panel1;
+        private Label label1;
+        private Label Apps;
+        private Label FileSize;
+        private Panel panel2;
     }
 }
