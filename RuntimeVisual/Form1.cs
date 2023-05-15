@@ -12,6 +12,7 @@ namespace RuntimeVisual
         private static JsonSerializerSettings _settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
         private static string _timeDataPath = @"TimeData.json";
         private static string _likedDataPath = @"Liked.json";
+        private static string _compressedTimeDataPath = @"CompressedTime.json";
 
         public Form1()
         {
@@ -25,6 +26,10 @@ namespace RuntimeVisual
             if (!File.Exists(_timeDataPath))
             {
                 File.WriteAllText(_timeDataPath, "");
+            }
+            if (!File.Exists(_compressedTimeDataPath))
+            {
+                File.WriteAllText(_compressedTimeDataPath, "");
             }
 
             var likedData = FileMethods.ReadLiked();
@@ -356,6 +361,36 @@ namespace RuntimeVisual
         {
             InfoPanel infoPanel = new InfoPanel();
             infoPanel.ShowDialog();
+        }
+
+        private void Compress_Click(object sender, EventArgs e)
+        {
+            var userConfirmation = MessageBox.Show("This process is EXPERIMENTAL and may lead to errors. You can't revese it and after compression you will no longer be able to check time by date for the compressed part of data.", "Warning: Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (userConfirmation == DialogResult.OK)
+            {
+                var timeData = FileMethods.ReadTime();
+                List<CompressedTimeModel> compressData = new List<CompressedTimeModel>();
+                var appGroups = timeData.GroupBy(n => n.AppName);
+                TimeSpan runTime = new TimeSpan();
+
+                foreach (var item in appGroups)
+                {
+                    foreach (var item1 in timeData.Where(n => n.AppName == item.Key))
+                    {
+                        runTime += item1.ExitTime - item1.StartTime;
+                    }
+                    compressData.Add(new CompressedTimeModel(item.Key, runTime));
+                }
+
+                var compressStrng = JsonConvert.SerializeObject(compressData);
+                File.WriteAllText(_compressedTimeDataPath, compressStrng);
+                File.WriteAllText(_timeDataPath, "");
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

@@ -61,6 +61,7 @@
             label1 = new Label();
             Apps = new Label();
             FileSize = new Label();
+            Compress = new Button();
             AppTagPanel.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -346,7 +347,7 @@
             label1.Name = "label1";
             label1.Size = new Size(182, 34);
             label1.TabIndex = 27;
-            label1.Text = "App Data";
+            label1.Text = "Statistics";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Apps
@@ -365,11 +366,22 @@
             FileSize.TabIndex = 0;
             FileSize.Text = "Size:";
             // 
+            // Compress
+            // 
+            Compress.Location = new Point(487, 53);
+            Compress.Name = "Compress";
+            Compress.Size = new Size(112, 34);
+            Compress.TabIndex = 27;
+            Compress.Text = "Compress";
+            Compress.UseVisualStyleBackColor = true;
+            Compress.Click += Compress_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 451);
+            Controls.Add(Compress);
             Controls.Add(panel1);
             Controls.Add(SaveTime);
             Controls.Add(SaveLiked);
@@ -434,5 +446,6 @@
         private Label Apps;
         private Label FileSize;
         private Panel panel2;
+        private Button Compress;
     }
 }
